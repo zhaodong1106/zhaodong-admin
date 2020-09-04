@@ -4,12 +4,12 @@
       <el-form >
         <el-form-item>
           <el-input placeholder="请输入用户名" v-model="name">
-            <i slot="prefix" class="el-input__icon el-icon-search"></i>
+            <i slot="prefix" class="el-input__icon el-icon-user"></i>
           </el-input>
         </el-form-item>
         <el-form-item>
           <el-input placeholder="请输入密码" v-model="password">
-            <i slot="prefix" class="el-input__icon el-icon-search"></i>
+            <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
         </el-form-item>
       </el-form>
