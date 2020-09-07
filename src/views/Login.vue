@@ -1,16 +1,31 @@
 <template>
   <div id="full">
     <div id="loginContainer">
-      <el-form >
-        <el-form-item>
-          <el-input placeholder="请输入用户名" v-model="name">
+      <h2>破产管理系统</h2>
+      <el-form ref="userForm" :model="userForm" :rules="userFormRule">
+        <el-form-item prop="name">
+          <el-input placeholder="请输入用户名" v-model="userForm.name">
             <i slot="prefix" class="el-input__icon el-icon-user"></i>
           </el-input>
         </el-form-item>
         <el-form-item>
-          <el-input placeholder="请输入密码" v-model="password">
+          <el-input placeholder="请输入密码" v-model="userForm.password">
             <i slot="prefix" class="el-input__icon el-icon-lock"></i>
           </el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input placeholder="请输入验证码" type="text" >
+            <i slot="prefix" class="el-input__icon el-icon-lock"></i>
+          </el-input>
+        </el-form-item>
+        <el-form-item >
+          <div style="display: flex;justify-content: space-between">
+            <img :src="userForm.kaptcha"/>
+            <a @click="changeKaptcha" style="text-decoration: none;cursor: pointer">看不清楚，换一张</a>
+          </div>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm()" style="width: 100%">登陆</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -22,10 +37,48 @@
         name: "Login",
         data:function () {
           return{
-            name:'',
-            password:''
+            userForm:{
+              name:'',
+              password:'',
+              kaptcha:''
+            },
+            userFormRule:{
+              name:[
+                {
+                  required:true,message:'请输入姓名',trigger:'blur',
+                },
+                {
+                  min:1,max:8,message:'长度最大8个字符',trigger:'blur'
+                }
+              ]
+            }
+          }
+        },
+        mounted(){
+          this.getKaptcha();
+        },
+        methods:{
+          submitForm(){
+            this.$refs['userForm'].validate((valid)=>{
+              if(valid){
+                alert('submit')
+              }else{
+                return false;
+              }
+            })
+          },
+          getKaptcha(){
+            this.$axios.get("http://localhost:8080/api/kaptcha/defaultKaptcha?uuid=2131231")
+              .then(res=>{
+                console.log(res)
+                  this.userForm.kaptcha="data:image/jpeg;base64,"+res.data;
+              })
+          },
+          changeKaptcha(){
+            this.getKaptcha();
           }
         }
+
     }
 </script>
 
