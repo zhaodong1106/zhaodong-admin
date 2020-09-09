@@ -25,6 +25,9 @@
           </div>
         </el-form-item>
         <el-form-item>
+          <div>{{userForm.phone|numberFormatter(2)}}</div>
+        </el-form-item>
+        <el-form-item>
           <el-button type="primary" :loading="1==2" @click="submitForm()" style="width: 30%">登陆</el-button>
           <el-button type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
         </el-form-item>
@@ -41,7 +44,8 @@
             userForm:{
               name:'',
               password:'',
-              kaptcha:''
+              kaptcha:'',
+              phone:15214
             },
             userFormRule:{
               name:[
