@@ -70,7 +70,7 @@
             })
           },
           regist(){
-            alert(this.$store.state.userInfo.name)
+            this.$store.commit('removeUser');
           },
           getKaptcha(){
             this.$axios.get("http://localhost:8080/api/kaptcha/defaultKaptcha?uuid=2131231")
