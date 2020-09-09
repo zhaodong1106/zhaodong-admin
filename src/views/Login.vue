@@ -25,7 +25,8 @@
           </div>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" v-fast-click @click="submitForm()" style="width: 100%">登陆</el-button>
+          <el-button type="primary" :loading="1==2" @click="submitForm()" style="width: 30%">登陆</el-button>
+          <el-button type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -61,11 +62,15 @@
           submitForm(){
             this.$refs['userForm'].validate((valid)=>{
               if(valid){
+                this.$store.commit("setUser",{name:"zhaodong",phone:'15214358494'})
                 alert('submit')
               }else{
                 return false;
               }
             })
+          },
+          regist(){
+            alert(this.$store.state.userInfo.name)
           },
           getKaptcha(){
             this.$axios.get("http://localhost:8080/api/kaptcha/defaultKaptcha?uuid=2131231")
