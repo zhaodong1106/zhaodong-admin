@@ -20,7 +20,7 @@
         </el-form-item>
         <el-form-item >
           <div style="display: flex;justify-content: space-between">
-            <img :src="userForm.kaptcha"/>
+            <img @click="changeKaptcha" :src="userForm.kaptcha" style="cursor: pointer"/>
             <a @click="changeKaptcha" style="text-decoration: none;cursor: pointer">看不清楚，换一张</a>
           </div>
         </el-form-item>
@@ -29,7 +29,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :loading="1==2" @click="submitForm()" style="width: 30%">登陆</el-button>
-          <el-button type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
+          <el-button  v-permission="['ADMIN']" type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -66,7 +66,7 @@
           submitForm(){
             this.$refs['userForm'].validate((valid)=>{
               if(valid){
-                this.$store.commit("setUser",{name:"zhaodong",phone:'15214358494'})
+                this.$store.commit("setUser",{name:"zhaodong",phone:'15214358494',roles:['ADMIN']})
                 alert('submit')
               }else{
                 return false;
@@ -100,7 +100,7 @@
     background-color:aliceblue;
     box-shadow: 0 0 8px rgba(0,0,0,.1);
     padding: 50px 50px 30px;
-    width: 250px;
+    width: 300px;
   }
 
   #loginContainer .form-item{
