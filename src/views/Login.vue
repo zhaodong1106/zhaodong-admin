@@ -29,7 +29,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" :loading="1==2" @click="submitForm()" style="width: 30%">登陆</el-button>
-          <el-button  v-permission="['ADMIN']" type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
+          <el-button  v-permission="['EDIT']" type="primary" :loading="1==2" @click="regist()" style="width: 30%">注册</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -37,8 +37,10 @@
 </template>
 
 <script>
+    import permission from '@/directive/permission';
     export default {
         name: "Login",
+        directives:{permission},
         data:function () {
           return{
             userForm:{

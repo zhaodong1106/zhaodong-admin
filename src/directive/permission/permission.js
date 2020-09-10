@@ -1,10 +1,10 @@
-import store from '@/store/store';
+import index from '@/store/index';
 
 
 
 function checkPermission(el,binding) {
   const {value}=binding;
-  const roles=store.state.userInfo['roles'];
+  const roles=index.state.userInfo['roles'];
   console.log(value);
   console.log(roles);
   if(value&&value instanceof  Array){
@@ -22,7 +22,7 @@ function checkPermission(el,binding) {
   }
 }
 
-export default {
+const permission= {
   inserted(el, binding) {
     checkPermission(el, binding)
   },
@@ -30,3 +30,4 @@ export default {
     checkPermission(el, binding)
   }
 }
+export default permission;

@@ -8,13 +8,14 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 import moment from 'moment';
-import store from './store/store'
+import store from './store'
 import * as filters from './filters';
-import permission  from "./directive/permission/permission";
+
 
 Vue.prototype.$axios = axios //全局注册，使用方法为:this.$axios
 Vue.prototype.$moment=moment;//赋值使用，使用方法为:this.moment
-Vue.directive("permission",permission);
+
+// Vue.directive("permission",permission);
 
 Object.keys(filters).forEach(key=>{
   Vue.filter(key,filters[key])
@@ -39,7 +40,7 @@ Vue.use(ElementUI);
 new Vue({
   el: '#app',
   router,
-  store,
+  store: store,
   components: { App },
   template: '<App/>'
 })
