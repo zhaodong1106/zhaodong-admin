@@ -1,0 +1,28 @@
+@import "mixin.css";
+
+#app{
+  height: 100%;
+}
+
+html{
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,*:before,*:after{
+  box-sizing: inherit;
+}
+body{
+  height: 100%;
+}
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+.pointer{
+  cursor: pointer;
+}

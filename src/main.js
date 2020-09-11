@@ -10,6 +10,7 @@ import axios from 'axios';
 import moment from 'moment';
 import store from './store'
 import * as filters from './filters';
+import './style/index.css'
 
 
 Vue.prototype.$axios = axios //全局注册，使用方法为:this.$axios

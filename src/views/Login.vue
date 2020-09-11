@@ -1,5 +1,9 @@
 <template>
   <div id="full">
+    <div class="clearfix">
+      <div>2222</div>
+      <div>222</div>
+    </div>
     <div id="loginContainer">
       <h2>破产管理系统</h2>
       <el-form ref="userForm" :model="userForm" :rules="userFormRule">
@@ -93,7 +97,7 @@
     }
 </script>
 
-<style scoped>
+<style scoped >
   #loginContainer{
     position:fixed;
     top:50%;
@@ -102,7 +106,7 @@
     background-color:aliceblue;
     box-shadow: 0 0 8px rgba(0,0,0,.1);
     padding: 50px 50px 30px;
-    width: 300px;
+    width: 400px;
   }
 
   #loginContainer .form-item{
